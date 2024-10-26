@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.qrcode_generator_android.ui.theme.QrcodegeneratorandroidTheme
+import com.google.zxing.qrcode.encoder.QRCode
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,8 +21,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             QrcodegeneratorandroidTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
+                    QRCodeView(
+                        viewModel = QRCodeViewModel(),
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -30,18 +31,10 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     QrcodegeneratorandroidTheme {
-        Greeting("Android")
+        QRCodeView(viewModel = QRCodeViewModel(), modifier = Modifier)
     }
 }
