@@ -19,7 +19,7 @@ class QRCodeViewModel : ViewModel() {
     fun generateQRCode() {
         val qrCodeBitmap = try {
             val hints = mapOf(
-                EncodeHintType.MARGIN to 0,
+                EncodeHintType.MARGIN to 4,
                 EncodeHintType.ERROR_CORRECTION to ErrorCorrectionLevel.M
             )
             val bitMatrix: BitMatrix = MultiFormatWriter().encode(
